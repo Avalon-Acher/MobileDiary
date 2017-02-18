@@ -30,13 +30,16 @@ public class NovelAdapter extends RecyclerView.Adapter<NovelAdapter.ViewHolder> 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.novel_item,parent,false);
-        ViewHolder holder=new ViewHolder(view);
+        final ViewHolder holder=new ViewHolder(view);
         holder.novelView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //子Item点击事件
                 Activity activity= ActivityCollector.activitys.get(ActivityCollector.activitys.size()-1);
                 Intent intent=new Intent(activity, ReadNovelActivity.class);
+                intent.putExtra("chapter",holder.chapter);
+                intent.putExtra("name",holder.chapter);
+                intent.putExtra("author",holder.chapter);
                 activity.startActivity(intent);
             }
         });
@@ -50,6 +53,9 @@ public class NovelAdapter extends RecyclerView.Adapter<NovelAdapter.ViewHolder> 
         holder.novelTitle.setText(novel.getTitle());
         holder.novelReadDate.setText(novel.getReadDate());
         holder.novelAlterDate.setText(novel.getAlterDate());
+        holder.chapter=String.valueOf(novel.getChapter());
+        holder.name=novel.getName();
+        holder.author=novel.getAuthor();
     }
 
     @Override
@@ -63,6 +69,9 @@ public class NovelAdapter extends RecyclerView.Adapter<NovelAdapter.ViewHolder> 
         TextView novelReadDate;
         TextView novelAlterDate;
         View novelView;
+        String chapter;
+        String name;
+        String author;
         public ViewHolder(View itemView) {
             super(itemView);
             novelView=itemView;

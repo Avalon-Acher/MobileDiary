@@ -47,6 +47,10 @@ public class NovelActivity extends BaseActivity{
             @Override
             public void onClick(View v) {
                 //新建章节
+                Intent intent=new Intent(NovelActivity.this,CreateNovelChapterActivity.class);
+                intent.putExtra("novelBookName",novelBookName);
+                intent.putExtra("novelBookAuthor",novelBookAuthor);
+                startActivity(intent);
             }
         });
 

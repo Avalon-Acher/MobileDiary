@@ -9,4 +9,10 @@
     <string name="novel_summary">小说摘要:</string>
     <string name="novel_preserve">保存</string>
 
+    <string name="create_novel_author">作者:</string>
+    <string name="create_novel_chapter">章节:</string>
+    <string name="create_novel_title">标题:</string>
+
+    <string name="read_novel_chapter">章节:</string>
+    <string name="read_novel_title">标题:</string>
 </resources>
