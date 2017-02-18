@@ -43,14 +43,14 @@ public class NovelBook extends DataSupport {
         this.author = author;
     }
 
-    public String getChapterCount() {
+    public int getChapterCount() {
         return chapterCount;
     }
 
-    public void setChapterCount(String chapterCount) {
+    public void setChapterCount(int chapterCount) {
         this.chapterCount = chapterCount;
     }
 
-    private String chapterCount;//小说总章数
+    private int chapterCount;//小说总章数
 
 }

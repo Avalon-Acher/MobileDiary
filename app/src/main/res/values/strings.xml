@@ -3,4 +3,10 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    
+    <string name="novel_name">小说名字:</string>
+    <string name="novel_author">小说作者:</string>
+    <string name="novel_summary">小说摘要:</string>
+    <string name="novel_preserve">保存</string>
+
 </resources>

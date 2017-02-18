@@ -3,19 +3,36 @@
     package="com.example.mobilediary" >
 
     <application
+        android:name="org.litepal.LitePalApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:supportsRtl="true"
         android:theme="@style/AppTheme" >
+
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activitys.CreateNovelBookActivity"
+            android:theme="@style/CreateNovelBookActivityTheme"></activity>
+
+        <activity android:name=".activitys.NovelActivity"
+            android:theme="@style/NovelActivityTheme"></activity>
+
+        <activity android:name=".activitys.ReadNovelActivity"
+            android:theme="@style/ReadNovelActivityTheme"></activity>
+
+        <activity android:name=".activitys.WriteNovelActivity"
+            android:theme="@style/WriteActivityTheme"></activity>
+
+        <activity android:name=".activitys.CreateNovelChapterActivity"
+            android:theme="@style/CreateNovelChapterActivityTheme"></activity>
+
     </application>
 
 </manifest>
