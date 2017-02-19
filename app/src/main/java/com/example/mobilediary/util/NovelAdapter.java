@@ -38,8 +38,8 @@ public class NovelAdapter extends RecyclerView.Adapter<NovelAdapter.ViewHolder> 
                 Activity activity= ActivityCollector.activitys.get(ActivityCollector.activitys.size()-1);
                 Intent intent=new Intent(activity, ReadNovelActivity.class);
                 intent.putExtra("chapter",holder.chapter);
-                intent.putExtra("name",holder.chapter);
-                intent.putExtra("author",holder.chapter);
+                intent.putExtra("name",holder.name);
+                intent.putExtra("author",holder.author);
                 activity.startActivity(intent);
             }
         });
@@ -60,7 +60,7 @@ public class NovelAdapter extends RecyclerView.Adapter<NovelAdapter.ViewHolder> 
 
     @Override
     public int getItemCount() {
-        return 0;
+        return novels.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{

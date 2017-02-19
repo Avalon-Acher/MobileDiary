@@ -77,7 +77,7 @@ public class CreateNovelChapterActivity extends BaseActivity {
             case R.id.save:
                 if(checkEditText(view_chapter)&&checkEditText(view_title)&&view_content.getText()!=null){
 
-                    List<Novel> list= DataSupport.where("chapter=?",view_chapter.getText().toString()).find(Novel.class);
+                    List<Novel> list= DataSupport.where("chapter=? and name=? and author=?",view_chapter.getText().toString(),name,author).find(Novel.class);
                     if(list!=null&&list.size()!=0){
                         Toast.makeText(this,"章节已经存在，请重新输入",Toast.LENGTH_SHORT).show();
                         break;

@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 
 import com.example.mobilediary.BaseActivity;
@@ -40,6 +41,7 @@ public class NovelActivity extends BaseActivity{
         novelBookAuthor=intent.getStringExtra("novelBookAuthor");
 
         toolbar=(Toolbar)findViewById(R.id.novel_toolbar);
+        toolbar.setTransitionName(novelBookName);
         setSupportActionBar(toolbar);
 
         fab=(FloatingActionButton)findViewById(R.id.novel_fab);
@@ -70,6 +72,7 @@ public class NovelActivity extends BaseActivity{
     @Override
     protected void onResume() {
         super.onResume();
+        Log.d("NovelActivity","onResume");
         novels.clear();
         List<Novel> chapters=DataSupport.where("name=? and author=?",novelBookName,novelBookAuthor).find(Novel.class);
         for(Novel novel:chapters)

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -39,6 +40,8 @@ public class ReadNovelActivity extends BaseActivity {
         name=intent.getStringExtra("name");
         author=intent.getStringExtra("author");
 
+        Log.d("ReadNovelActivity",chapter+name+author);
+
         toolbar=(Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -60,7 +63,7 @@ public class ReadNovelActivity extends BaseActivity {
         super.onResume();
         List<Novel> novels= DataSupport.where("chapter=? and name=? and author=?",chapter,name,author).find(Novel.class);
         novel=novels.get(0);
-        view_chapter.setText(novel.getChapter());
+        view_chapter.setText(String.valueOf(novel.getChapter()));
         view_title.setText(novel.getTitle());
         view_content.setText(novel.getConnect());
     }
@@ -85,10 +88,11 @@ public class ReadNovelActivity extends BaseActivity {
                 break;
 
             case R.id.write:
-                Intent intent=new Intent(this,WriteNovelActivity.class);
+                Intent intent=new Intent(ReadNovelActivity.this,WriteNovelActivity.class);
                 Bundle bundle=new Bundle();
                 bundle.putSerializable("novel",novel);
                 intent.putExtras(bundle);
+                Log.d("ReadNovelActivity","Read startActivity");
                 startActivity(intent);
                 break;
         }

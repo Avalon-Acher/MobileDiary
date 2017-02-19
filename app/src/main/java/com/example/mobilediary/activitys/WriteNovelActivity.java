@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
@@ -33,6 +34,8 @@ public class WriteNovelActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_write_novel);
 
+        Log.d("WriteNovelActivity","How");
+
         toolbar=(Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -47,7 +50,7 @@ public class WriteNovelActivity extends BaseActivity {
         novel= (Novel) bundle.getSerializable("novel");
         initView();
 
-        chapter.setText(novel.getChapter());
+        chapter.setText(String.valueOf(novel.getChapter()));
         title.setText(novel.getTitle());
         content.setText(novel.getConnect());
     }
@@ -77,6 +80,7 @@ public class WriteNovelActivity extends BaseActivity {
                 }else{
                     Toast.makeText(this,"修改内容不得为空",Toast.LENGTH_SHORT).show();
                 }
+                finish();
                 break;
         }
         return true;
