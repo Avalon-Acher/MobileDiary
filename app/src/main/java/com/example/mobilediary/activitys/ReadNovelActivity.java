@@ -2,8 +2,11 @@ package com.example.mobilediary.activitys;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 import com.example.mobilediary.BaseActivity;
@@ -24,7 +27,7 @@ public class ReadNovelActivity extends BaseActivity {
     private TextView view_title;
     private TextView view_content;
     private String chapter,name,author;
-
+    private Novel novel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +42,12 @@ public class ReadNovelActivity extends BaseActivity {
         toolbar=(Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        ActionBar actionBar=getSupportActionBar();
+        if(actionBar!=null){
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setHomeAsUpIndicator(R.drawable.ic_back);
+        }
+
         initView();
 
 
@@ -50,7 +59,7 @@ public class ReadNovelActivity extends BaseActivity {
     protected void onResume() {
         super.onResume();
         List<Novel> novels= DataSupport.where("chapter=? and name=? and author=?",chapter,name,author).find(Novel.class);
-        Novel novel=novels.get(0);
+        novel=novels.get(0);
         view_chapter.setText(novel.getChapter());
         view_title.setText(novel.getTitle());
         view_content.setText(novel.getConnect());
@@ -62,4 +71,27 @@ public class ReadNovelActivity extends BaseActivity {
         view_content=(TextView)findViewById(R.id.read_novel_content);
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.read_novel_toolbar,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                finish();
+                break;
+
+            case R.id.write:
+                Intent intent=new Intent(this,WriteNovelActivity.class);
+                Bundle bundle=new Bundle();
+                bundle.putSerializable("novel",novel);
+                intent.putExtras(bundle);
+                startActivity(intent);
+                break;
+        }
+        return true;
+    }
 }

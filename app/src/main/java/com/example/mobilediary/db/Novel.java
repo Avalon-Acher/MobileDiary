@@ -2,10 +2,12 @@ package com.example.mobilediary.db;
 
 import org.litepal.crud.DataSupport;
 
+import java.io.Serializable;
+
 /**
  * Created by 连浩逵 on 2017/2/15.
  */
-public class Novel extends DataSupport {
+public class Novel extends DataSupport implements Serializable{
     private int id;
     private String title;//标题
     private String connect;//内容
